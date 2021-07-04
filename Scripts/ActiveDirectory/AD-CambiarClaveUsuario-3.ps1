@@ -1,3 +1,8 @@
+<#
+.\Reset-ADUserPassword.ps1 -username user_a
+
+#>
+
 # Add a parameter called username.
  param (
      $username
