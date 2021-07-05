@@ -31,27 +31,30 @@ $nuevaClave = $clave | ConvertTo-SecureString -AsPlainText -Force
 $outlook = new-object -comobject outlook.application
 $email = $outlook.CreateItem(0)
 $email.To = "fernando.rodriguez.ext@vwgroupretail.es"
-$email.Cc = "soporte.levante@vwgroupretail.es" 
-$email.Subject = "$Name - Aviso de Contraseña próxima a Caducar"
+<# $email.Cc = "soporte.levante@vwgroupretail.es" #>
+$email.Subject = "Nueva Clave Usuario $usuario"
 $email.Body = "Buenas,
 			
-	Nueva clave:
-    
-    USUARIO; $usuario
-    CLAVE: $clave
-    
-	Para asistencia t�cnica, utilice siempre el Formulario Contacto - https://bit.ly/3lTg7xS 
-	
-    Atentamente,
-	
-    Fernando A. Rodríguez Mallou
-	Servicio IT Externo
-	Mvl +34 659 69 20 48
-	Ext 2973
-	fernando.rodriguez.ext@vwgroupretail.es
-	soporte.levante@vwgroupretail.es
-	" 
-					
+Nueva clave:
+
+USUARIO; $usuario
+CLAVE: $clave
+
+Para asistencia, utilice siempre el Formulario Contacto - https://bit.ly/3lTg7xS 
+
+Atentamente,
+
+Fernando A. Rodriguez Mallou
+Servicio IT Externo
+Mvl +34 659 69 20 48
+Ext 2973
+fernando.rodriguez.ext@vwgroupretail.es
+soporte.levante@vwgroupretail.es
+" 
 $email.Send()
 
-start powershell Set-ADAccountPassword -Identity $usuario -NewPassword $nuevaClave -Reset -credential ""
+
+$username = Read-Host "Usuario Administrador"
+$securePassword = Read-Host "Clave Administrador" -AsSecureString
+$credential = New-Object System.Management.Automation.PSCredential $username, $securePassword
+Set-ADAccountPassword -Identity $usuario -NewPassword $nuevaClave -Reset -Credential $credential
