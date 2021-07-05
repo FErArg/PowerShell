@@ -39,7 +39,6 @@ For ($i=1; $i -lt 3; $i++){
 }
 Write-Host $clave
 
-$OUpath0 = 'OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
 <# Seleccion UserName o email #>
 Write-Host '1 - Para Buscar usuario por UserName'
 Write-Host '2 - Para Buscar usuario por email'
