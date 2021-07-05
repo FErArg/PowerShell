@@ -1,8 +1,8 @@
 <#
-- HECHO
-Crea clave basado en diccionarios
-envia email con clave y usuario
-cambia clave en AD
+- Crea Clave aleatoria con diccionarios
+- pide usuario AD a cambiar clave
+- envia email
+- pise ruser/pass Admin AD y cambia clave
 
 - PENDIENTE
 * comprobar usuario en AD, si usuario OK sigue

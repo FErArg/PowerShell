@@ -1,3 +1,9 @@
+<#
+- Crea Clave aleatoria con diccionarios
+- pide usuario AD a cambiar clave
+- envia email
+- pise ruser/pass Admin AD y cambia clave
+#>
 [string[]]$palabras = Get-Content -Path 'palabras.txt'
 [string[]]$numeros = Get-Content -Path 'numeros.txt'
 [string[]]$simbolos = Get-Content -Path 'simbolos.txt'
