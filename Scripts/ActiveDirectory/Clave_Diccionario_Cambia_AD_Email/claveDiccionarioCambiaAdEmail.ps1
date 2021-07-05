@@ -59,7 +59,7 @@ soporte.levante@vwgroupretail.es
 " 
 $email.Send()
 
-
+<# Pide datos de Admin AD para cambiar clave en AD#>
 $username = Read-Host "Usuario Administrador"
 $securePassword = Read-Host "Clave Administrador" -AsSecureString
 $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword
