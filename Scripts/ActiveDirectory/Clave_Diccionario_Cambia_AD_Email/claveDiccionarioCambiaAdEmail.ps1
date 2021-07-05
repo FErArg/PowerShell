@@ -1,20 +1,3 @@
-<#
-- HECHO
-Crea clave basado en diccionarios
-envia email con clave y usuario
-cambia clave en AD
-
-- PENDIENTE
-* comprobar usuario en AD, si usuario OK sigue
-    * buscar email en AD
-    * buscar superior email
-    * enviar email a usuario, superior y OTRS
-
-
-#>
-
-$OUpath0 = 'OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
-
 [string[]]$palabras = Get-Content -Path 'palabras.txt'
 [string[]]$numeros = Get-Content -Path 'numeros.txt'
 [string[]]$simbolos = Get-Content -Path 'simbolos.txt'
