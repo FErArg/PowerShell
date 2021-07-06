@@ -19,7 +19,7 @@ $OUpath3 = 'OU=TALLER,OU=POSTVENTA,OU=30083_VW,OU=Levante,OU=Concesiones,DC=VGRS
 $OUpath4 = 'OU=TALLER,OU=POSTVENTA,OU=QUART,OU=51A41_AU,OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
 $OUpath5 = 'OU=TALLER,OU=POSTVENTA,OU=SEDAVI,OU=51A42_AU,OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
 $OUpath6 = 'OU=TALLER,OU=Manises,OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
-$OUpath7 = 'OU=PS222,OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
+# $OUpath7 = 'OU=PS222,OU=Levante,OU=Concesiones,DC=VGRS,DC=local'
 
 
 #Check if program dir is present
@@ -42,7 +42,7 @@ If (!($DirPathCheck))
 Import-Module ActiveDirectory
 "$Date - INFO: Getting users" | Out-File ($LogFile) -Append
 
-$OUs = @($OUpath0, $OUpath1, $OUpath2, $OUpath3, $OUpath4, $OUpath5, $OUpath6, $OUpath7)
+$OUs = @($OUpath0, $OUpath1, $OUpath2, $OUpath3, $OUpath4, $OUpath5, $OUpath6)
 
 # ForEach cada OU
 foreach ($ou in $OUs){
@@ -87,6 +87,7 @@ foreach ($ou in $OUs){
 		
 		$expireson = $passwordsetdate + $maxPasswordAge
 		$today = (get-date)
+
 		#Gets the count on how many days until the password expires and stores it in the $daystoexpire var
 		$daystoexpire = (New-TimeSpan -Start $today -End $Expireson).Days
 		
@@ -97,7 +98,27 @@ foreach ($ou in $OUs){
 			$manager = $manager.manager
 			$managerEmail = Get-ADUser -Identity $manager -Properties *
 			$managerEmailFiltrado = $managerEmail.mail
-		
+			
+			# Genera clave alearia basado en diccionarios
+			For ($i=1; $i -lt 3; $i++){
+				<# Write-Host $i #>
+				if( $i -Eq '2'){
+					$item=(Get-Random -Maximum ([array]$numeros).count)
+					$numero=$numeros[$item]
+					$clave += $numero
+					<# Write-Host $numero #>
+				}
+				if( $i -Eq '2'){
+					$item=(Get-Random -Maximum ([array]$simbolos).count)
+					$simbolo=$simbolos[$item]
+					$clave += $simbolo
+					<# Write-Host $numero #>
+				}
+				$item=(Get-Random -Maximum ([array]$palabras).count)
+				$palabra=$palabras[$item]
+				$clave += $palabra
+			}
+
 			"$Date - INFO: Sending expiry notice email to $Name" | Out-File ($LogFile) -Append
 			Write-Host "Sending Password expiry email to $name" -ForegroundColor Yellow
 			
@@ -111,16 +132,16 @@ foreach ($ou in $OUs){
 			
 			manager email $managerEmailFiltrado
 
-	Su clave de usuario/email expira en $daystoexpire días.
+	Su clave de usuario/email expira en $daystoexpire di'as.
 
 	Actualiza la clave o contacta con el departamento IT para que te ayude a actualizarla lo antes posible.
 
-	Para asistencia t�cnica, utilice siempre el Formulario Contacto - https://bit.ly/3lTg7xS 
+	Para asistencia te'cnica, utilice siempre el Formulario Contacto - https://bit.ly/3lTg7xS 
 
 
 	Atentamente,
 
-	Fernando A. Rodr�guez Mallou
+	Fernando A. Rodri'guez Mallou
 	Servicio IT Externo
 
 	Mvl +34 659 69 20 48
