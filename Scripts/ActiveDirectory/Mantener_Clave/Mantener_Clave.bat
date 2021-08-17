@@ -1,0 +1,1 @@
+powershell.exe -command "& 'A:\PowerShell\Scripts\ActiveDirectory\Mantener_Clave\Mantener_Clave.ps1'
