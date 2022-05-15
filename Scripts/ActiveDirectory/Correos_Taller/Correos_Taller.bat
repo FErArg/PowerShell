@@ -1,1 +1,0 @@
-powershell.exe -command "& 'A:\PowerShell\Scripts\ActiveDirectory\Correos_Taller\Correos_Taller.ps1'
