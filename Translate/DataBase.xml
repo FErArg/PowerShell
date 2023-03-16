@@ -1,0 +1,3 @@
+    <DBColumnText DefaultValue="dri_DigitalRadioAlarm_tab.DigitalRadioAlarmName.NonUnique|Digital Radio Group Combined" TranslatedValue="" ColumnMaxLength="100" />
+    <DBColumnText DefaultValue="dri_DigitalRadioAlarm_tab.DigitalRadioAlarmName.NonUnique|Digital Radio Group Not Found" TranslatedValue="" ColumnMaxLength="100" />
+    <DBColumnText DefaultValue="dri_DigitalRadioAlarm_tab.DigitalRadioAlarmName.NonUnique|Digital Radio Group Not Empty" TranslatedValue="" ColumnMaxLength="100" />
